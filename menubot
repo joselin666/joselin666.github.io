@@ -1,0 +1,11 @@
+start - Muestra el mensaje de Bienvenida
+menu - Muestra el Menu
+uptime - Muestra el tiempo encendido
+disk - Muestra el espacio disponible
+red - Muestra la informacion de la red
+ping - Ejecuta un ping a la ip indicada
+router - Ejecuta un ping al router
+run - Ejecuta el comando indicado
+log - Envia el log del Bot
+reboot - Reinicia el sistema
+apagar - Apaga el sistema
