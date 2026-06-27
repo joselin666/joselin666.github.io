@@ -41,10 +41,11 @@
         }
 
         .tabla {
-            column-count: 2;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.4rem;
             margin-top: 0.1%;
             text-align: center;
-
         }
 
         @media screen and (min-width: 640px) {
@@ -225,8 +226,8 @@
         <p style="background: brown;">Ebook</p>
     </div>
     <div class="tabla">
-        <a href="https://mundoepub14.com/">
-            <p>mundoepub14 VPN</p>
+        <a href="https://mundoepub.net/">
+            <p>mundoepub</p>
         </a>
         <a href="https://www.mobileread.com">
             <p>Foro Mobileread</p>
