@@ -399,7 +399,25 @@
     <div class="simple"><a href="https://www.aemet.es/es/eltiempo/prediccion/municipios/alcobendas-id28006">
             <p style="background: navy;">Aemet
             </p>
-        </a></div>
+        </a>
+    </div>
+
+    <p id="fecha-modificacion">(c) josefer</p>
+
+    <script>
+        const fechaElemento = document.getElementById('fecha-modificacion');
+        if (fechaElemento) {
+            const valor = document.lastModified;
+            const fecha = valor ? new Date(valor) : null;
+            const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+            if (fecha && !isNaN(fecha)) {
+                fechaElemento.textContent = `(c) josefer modificado el ${fecha.getDate()} de ${meses[fecha.getMonth()]} de ${fecha.getFullYear()}`;
+            } else {
+                fechaElemento.textContent = '(c) josefer';
+            }
+        }
+    </script>
 
 </body>
 
