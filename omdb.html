@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Búsqueda de Series con OMDb API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #result {
+      margin-top: 20px;
+    }
+    img {
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Buscar serie en OMDb</h1>
+  <input type="text" id="serieNombre" placeholder="Introduce el nombre de la serie" />
+  <button onclick="buscarSerie()">Buscar</button>
+
+  <div id="result"></div>
+
+  <script>
+    async function buscarSerie() {
+      const apiKey = '242fd21d';
+      const nombre = document.getElementById('serieNombre').value.trim();
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '';
+
+      if (!nombre) {
+        resultDiv.innerHTML = '<p>Por favor, introduce un nombre de serie.</p>';
+        return;
+      }
+
+      try {
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(nombre)}&type=series`);
+        const data = await response.json();
+
+        if (data.Response === 'True') {
+          resultDiv.innerHTML = `
+            <h2>${data.Title} (${data.Year})</h2>
+            <img src="${data.Poster !== 'N/A' ? data.Poster : ''}" alt="Poster de ${data.Title}" />
+            <p><strong>Género:</strong> ${data.Genre}</p>
+            <p><strong>Resumen:</strong> ${data.Plot}</p>
+            <p><strong>IMDB Rating:</strong> ${data.imdbRating}</p>
+          `;
+        } else {
+          resultDiv.innerHTML = `<p>No se encontró la serie: ${nombre}</p>`;
+        }
+      } catch (error) {
+        resultDiv.innerHTML = '<p>Error al buscar la serie.</p>';
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
